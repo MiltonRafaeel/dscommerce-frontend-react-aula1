@@ -423,7 +423,7 @@
   dependencies:
     csstype "^3.2.2"
 
-"@typescript-eslint/eslint-plugin@8.59.0":
+"@typescript-eslint/eslint-plugin@8.59.0", "@typescript-eslint/eslint-plugin@^8.59.0":
   version "8.59.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.59.0.tgz#fcbe76b693ce2412410cf4d48aefd617d345f2d9"
   integrity sha512-HyAZtpdkgZwpq8Sz3FSUvCR4c+ScbuWa9AksK2Jweub7w4M3yTz4O11AqVJzLYjy/B9ZWPyc81I+mOdJU/bDQw==
@@ -437,7 +437,7 @@
     natural-compare "^1.4.0"
     ts-api-utils "^2.5.0"
 
-"@typescript-eslint/parser@8.59.0":
+"@typescript-eslint/parser@8.59.0", "@typescript-eslint/parser@^8.59.0":
   version "8.59.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-8.59.0.tgz#57a138280b3ceaf07904fbd62c433d5cc1ee1573"
   integrity sha512-TI1XGwKbDpo9tRW8UDIXCOeLk55qe9ZFGs8MTKU6/M08HWTw52DD/IYhfQtOEhEdPhLMT26Ka/x7p70nd3dzDg==
