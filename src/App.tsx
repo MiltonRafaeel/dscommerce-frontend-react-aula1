@@ -1,8 +1,8 @@
-import Catalog from './routes/Catalog';
+import ProductDetails from './routes/ProductDetails/indext';
 
 export default function App() {
 
  return (
-    <Catalog />
+    <ProductDetails />
  );
 }
