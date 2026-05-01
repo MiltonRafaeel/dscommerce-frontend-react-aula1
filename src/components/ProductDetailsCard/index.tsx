@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default function ProductDetailsCard({ product }: Props) {
-    
+
     return (
         <div className="dsc-card dsc-mb20">
             <div className="dsc-product-details-top dsc-line-bottom">
@@ -19,8 +19,11 @@ export default function ProductDetailsCard({ product }: Props) {
                 <h4>{product.name}</h4>
                 <p>{product.description}</p>
                 <div className="dsc-category-container">
-                    <ProductCategory name="Eletrônicos" />
-                    <ProductCategory name="Computadores" />                   
+                    {
+                        product.categories.map(item => (
+                            <ProductCategory key={item.id} name={item.name} />
+                        ))
+                    }
                 </div>
             </div>
         </div>
