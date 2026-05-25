@@ -5,12 +5,25 @@ import ButtonNextPage from '../../../components/ButtonNextPage';
 import { useEffect, useState } from 'react';
 import type { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
+import type { CategoryDTO } from '../../../models/category';
 
 export default function Catalog() {
 
     const [products, setProducts] = useState<ProductDTO[]>([]);
 
+    const objTest : CategoryDTO = {
+        id: 8,
+        name: "Jardinagem"
+    }
+
     useEffect(() => {
+
+      //  localStorage.setItem("minhaCategoria", JSON.stringify(objTest));
+
+      const obj = JSON.parse(localStorage.getItem("minhaCategoria") || "{}");
+      console.log(obj);
+      console.log(obj.name);
+
         productService.findAll()
             .then(response => {
                 setProducts(response.data.content);   
