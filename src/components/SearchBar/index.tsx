@@ -13,6 +13,11 @@ export default function SearchBar({ onSearch } : Props) {
         setText(event.target.value);
     }
 
+    function handleResetClick() {
+        setText("");
+        onSearch(text);
+    }
+
     function handleSubmite(event: any) {
         event.preventDefault();
         onSearch(text);
@@ -22,7 +27,7 @@ export default function SearchBar({ onSearch } : Props) {
         <form className="dsc-search-bar" onSubmit={handleSubmite}>
             <button type="submit">🔎︎</button>
             <input value={text} type="text" placeholder="Nome do produto" onChange={handleChange} />
-            <button type="reset">🗙</button>
+            <button onClick={handleResetClick}>🗙</button>
         </form>
     );
 }
