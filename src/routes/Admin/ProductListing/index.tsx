@@ -6,6 +6,7 @@ import * as productService from '../../../services/product-service';
 import type { ProductDTO } from '../../../models/product';
 import SearchBar from '../../../components/SearchBar';
 import ButtonNextPage from '../../../components/ButtonNextPage';
+import DialogInfo from '../../../components/DialogInfo';
 
 type QueryParams = {
     page: number;
@@ -85,6 +86,7 @@ export default function ProductListing() {
                     </div>
                 }
             </section>
+            <DialogInfo />
         </main>
     );
 }
