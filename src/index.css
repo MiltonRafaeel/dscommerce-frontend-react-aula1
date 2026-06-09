@@ -394,4 +394,9 @@ nav a {
 .dsc-dialog-box h2 {
   font-size: 20px;
   color: var(--dsc-color-font-primary);
+  margin-bottom: 20px;
+}
+
+.dsc-dialog-btn-container {
+  width: 100%;
 }

@@ -15,6 +15,11 @@ type QueryParams = {
 
 export default function ProductListing() {
 
+    const [dialogInfoData, setDialogInfoData] = useState({
+        visible: false,
+        message: "Operacao com sucesso!"
+    });
+
     const [isLastPage, setIsLastPage] = useState(false);
 
     const [products, setProducts] = useState<ProductDTO[]>([]);
@@ -39,7 +44,15 @@ export default function ProductListing() {
     }
 
     function handleNextPageClick() {
-        setQueryParam({ ...queryParams, page: queryParams.page + 1 })
+        setQueryParam({ ...queryParams, page: queryParams.page + 1 });
+    }
+
+    function handleDialogInfoClose() {
+        setDialogInfoData({ ...dialogInfoData, visible: false });
+    }
+
+    function handleDeleteClick() {
+        setDialogInfoData({ ...dialogInfoData, visible: true });
     }
 
     return (
@@ -73,7 +86,7 @@ export default function ProductListing() {
                                     <td className="dsc-tb768">{product.price.toFixed(2)}</td>
                                     <td className="dsc-txt-left">{product.name}</td>
                                     <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                                    <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
+                                    <td><img onClick={handleDeleteClick} className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
                                 </tr>
                             ))
                         }
@@ -86,7 +99,10 @@ export default function ProductListing() {
                     </div>
                 }
             </section>
-            <DialogInfo />
+            {
+                dialogInfoData.visible &&
+                <DialogInfo message={dialogInfoData.message} onDialogClose={handleDialogInfoClose} />
+            }
         </main>
     );
 }
