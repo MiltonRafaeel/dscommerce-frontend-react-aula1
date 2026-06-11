@@ -41,8 +41,8 @@ export default function ProductForm() {
 
     useEffect(() => {
 
-        const obj = forms.validate(formData, "name");
-        console.log(obj);
+        const result = forms.toDirty(formData, "price")
+        console.log(result)
 
         if (isEditing) {
             productService.findById(Number(params.productId))
@@ -58,6 +58,11 @@ export default function ProductForm() {
         setFormData(dataValidated);
     }
 
+    function handleTurnDirty(name: string) {
+        const newFormData = forms.toDirty(formData, name);
+        setFormData(newFormData);
+    }
+
     return (
         <main>
             <section id="product-form-section" className="dsc-container">
@@ -69,6 +74,7 @@ export default function ProductForm() {
                                 <FormInput
                                     {...formData.name}
                                     onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty}
                                     className="dsc-form-control"
                                 />
                                 <div className="dsc-form-error">{formData.name.message}</div>
@@ -77,6 +83,7 @@ export default function ProductForm() {
                                 <FormInput
                                     {...formData.price}
                                     onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty}
                                     className="dsc-form-control"
                                 />
                                 <div className="dsc-form-error">{formData.price.message}</div>
@@ -85,6 +92,7 @@ export default function ProductForm() {
                                 <FormInput
                                     {...formData.imgUrl}
                                     onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty} 
                                     className="dsc-form-control"
                                 />
                             </div>
