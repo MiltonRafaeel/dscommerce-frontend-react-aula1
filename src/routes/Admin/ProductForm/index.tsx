@@ -20,7 +20,7 @@ export default function ProductForm() {
             placeholder: "Nome",
         },
         price: {
-            value: 0,
+            value: "",
             id: "price",
             name: "price",
             type: "number",
@@ -53,7 +53,9 @@ export default function ProductForm() {
     }, [])
 
     function handleInputChange(event: any) {
-        setFormData(forms.update(formData, event.target.name, event.target.value));
+        const dataUpdate = forms.update(formData, event.target.name, event.target.value);
+        const dataValidated = forms.validate(dataUpdate, event.target.name)
+        setFormData(dataValidated);
     }
 
     return (
@@ -69,6 +71,7 @@ export default function ProductForm() {
                                     onChange={handleInputChange}
                                     className="dsc-form-control"
                                 />
+                                <div className="dsc-form-error">{formData.name.message}</div>
                             </div>
                             <div>
                                 <FormInput
@@ -76,6 +79,7 @@ export default function ProductForm() {
                                     onChange={handleInputChange}
                                     className="dsc-form-control"
                                 />
+                                <div className="dsc-form-error">{formData.price.message}</div>
                             </div>
                             <div>
                                 <FormInput
