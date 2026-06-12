@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import FormInput from '../../../components/FormInput';
 import * as forms from '../../../utils/forms';
 import * as productService from '../../../services/product-service';
+import FormTextArea from '../../../components/FormTextArea';
 
 export default function ProductForm() {
 
@@ -18,7 +19,7 @@ export default function ProductForm() {
             name: "name",
             type: "text",
             placeholder: "Nome",
-            validation: function(value: string) {
+            validation: function (value: string) {
                 return /^.{3,80}$/.test(value);
             },
             message: "Favor informar um nome de 3 a 80 caracteres"
@@ -29,7 +30,7 @@ export default function ProductForm() {
             name: "price",
             type: "number",
             placeholder: "Preço",
-            validation: function(value: any) {
+            validation: function (value: any) {
                 return Number(value) > 0;
             },
             message: "Favor informar um valor positivo"
@@ -40,6 +41,17 @@ export default function ProductForm() {
             name: "imgUrl",
             type: "text",
             placeholder: "Imagem",
+        },
+        description: {
+            value: "",
+            id: "description",
+            name: "description",
+            type: "text",
+            placeholder: "Descrição",
+            validation: function (value: string) {
+                return /^.{10,}$/.test(value);
+            },
+            message: "A descrição deve ter pelo menos 10 caracteres"
         }
     });
 
@@ -89,9 +101,18 @@ export default function ProductForm() {
                                 <FormInput
                                     {...formData.imgUrl}
                                     onChange={handleInputChange}
-                                    onTurnDirty={handleTurnDirty} 
+                                    onTurnDirty={handleTurnDirty}
                                     className="dsc-form-control"
                                 />
+                            </div>
+                             <div>
+                                <FormTextArea
+                                    {...formData.description}
+                                    onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty}
+                                    className="dsc-form-control dsc-textarea"
+                                />
+                                <div className="dsc-form-error">{formData.description.message}</div>
                             </div>
                         </div>
 
