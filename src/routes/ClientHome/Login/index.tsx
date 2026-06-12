@@ -68,7 +68,7 @@ export default function Login() {
                                     onTurnDirty={handleTurnDirty}
                                     className="dsc-form-control"
                                 />
-                                <div className="dsc-form-error"></div>
+                                <div className="dsc-form-error">{formData.username.message}</div>
                             </div>
                             <div>
                                 <FormInput
